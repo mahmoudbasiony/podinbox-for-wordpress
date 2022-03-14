@@ -1,0 +1,8 @@
+/node_modules
+/vendor
+
+languages/podinbox.pot
+package-lock.json
+composer.lock
+.DS_Store
+podinbox.zip
