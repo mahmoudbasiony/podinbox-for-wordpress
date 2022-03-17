@@ -1,5 +1,7 @@
 /node_modules
 /vendor
+node_modules/
+Vendor/
 
 languages/podinbox.pot
 package-lock.json
