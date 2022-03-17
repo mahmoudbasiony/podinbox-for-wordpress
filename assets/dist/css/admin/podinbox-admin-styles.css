@@ -1,159 +1,582 @@
 /**
  * Back-end styles.
  */
+html {
+  scroll-behavior: smooth; }
+
 .podinbox-plugin-container .podinbox-masthead {
   background-color: #fff;
+  text-align: center;
+  margin-left: -20px;
+  padding-left: 20px; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 75%;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 0;
+  height: auto; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__logo-container img {
+  width: 150px; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__info-container .podinbox-masthead__signup .podinbox-signup {
+  padding: 15px;
+  background: #ed3049;
+  border: 1px solid #ed3049;
+  transition: 0.3s;
+  color: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 10px; }
+
+.podinbox-message {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: fixed;
+  top: 9%;
+  left: 4%;
+  z-index: 1010;
+  width: 100%;
+  pointer-events: none; }
+
+.podinbox-message-notice {
+  padding: 8px;
   text-align: center; }
-  .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container {
+
+.podinbox-message-notice-content {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  pointer-events: all; }
+
+.podinbox-message-rtl {
+  direction: rtl; }
+
+.podinbox-message-rtl span {
+  direction: rtl; }
+
+.podinbox-message-custom-content.podinbox-message-success span {
+  margin-right: 7px;
+  display: inherit; }
+
+.podinbox-message-custom-content.podinbox-message-success svg {
+  fill: #6cbe4b;
+  width: 20px;
+  height: 20px; }
+
+.podinbox-message-custom-content.podinbox-message-success {
+  display: flex;
+  align-items: center; }
+
+button:focus {
+  box-shadow: none !important; }
+
+.podinbox-plugin-container .box-shadow {
+  box-shadow: 0 0 9px 0px #0000001f; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container > div {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container .podinbox-masthead__info-container {
+  display: flex;
+  width: 70%;
+  justify-content: flex-end;
+  align-items: center; }
+
+.podinbox-plugin-container a {
+  color: #eb304a;
+  text-decoration: none;
+  transition: 0.3s; }
+
+.podinbox-plugin-container {
+  font-weight: 500; }
+
+.podinbox-plugin-container .podinbox-body {
+  max-width: 75%;
+  margin: 30px auto; }
+
+.podinbox-plugin-container .podinbox-body__inside-container .podinbox-body__info-container h1.podinbox-body__info-title {
+  font-size: 20px;
+  font-weight: 600; }
+
+.podinbox-plugin-container .podinbox-body__info {
+  color: #666666; }
+
+.podinbox-plugin-container .podinbox-body__info p {
+  font-size: 15px;
+  line-height: 25px; }
+
+.podinbox-plugin-container span.step-one-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  display: inline-flex;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  justify-content: center;
+  margin-right: 8px; }
+
+.podinbox-plugin-container span.step-one-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #ed3049;
+  width: 50px;
+  height: 50px;
+  z-index: -9;
+  border-radius: 100%; }
+
+.podinbox-plugin-container span.step-one-title {
+  font-size: 17px;
+  color: #000; }
+
+.podinbox-plugin-container span.podinbox-link a {
+  color: #fff;
+  background: #eb304a;
+  padding: 8px 15px;
+  display: inline-block;
+  margin-left: 7px;
+  border: 1px solid #eb304a;
+  border-radius: 5px; }
+
+.podinbox-plugin-container .podinbox-body__step-one-form {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 25px 20px;
+  margin: 20px 0;
+  border-radius: 5px; }
+
+.podinbox-plugin-container .podinbox-body__step-one-form input {
+  padding: 5px 10px;
+  height: 50px;
+  width: 100%; }
+
+.podinbox-plugin-container .podinbox-body__step-one-form input:focus {
+  border-color: #eb304a;
+  outline: none; }
+
+.podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-input {
+  width: 26%; }
+
+.podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-action button {
+  height: 50px;
+  background: #eb304a;
+  border: 1px solid #eb304a;
+  margin-left: 20px;
+  padding: 0 30px;
+  transition: 0.3s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 5px; }
+
+.podinbox-body__step-two {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px -25px; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-image img {
+  width: 100%; }
+
+.podinbox-body__step-two > div {
+  width: 50%;
+  margin: 0 25px; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-install {
+  background: #fff;
+  padding: 35px 35px 15px 35px;
+  border-radius: 5px;
+  color: #000; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-install .floating-widget-install__enable {
+  padding: 25px 35px;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  margin: 0 -35px;
+  font-size: 14px; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-install .floating-widget-install__title h2 {
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 30px; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-install .floating-widget-install__advanced_options .floating-widget-install__advanced {
+  color: #eb304a;
+  margin: 15px 0;
+  font-size: 15px;
+  position: relative;
+  cursor: pointer;
+  width: max-content; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-install .floating-widget-install__advanced_options .floating-widget-install__advanced.collapsed::before {
+  transform: rotate(135deg);
+  top: 4px; }
+
+.podinbox-body__step-two .podinbox-body__floating-widget-install .floating-widget-install__advanced_options .floating-widget-install__advanced::before {
+  content: "";
+  border: 1px solid;
+  width: 7px;
+  height: 7px;
+  display: block;
+  border-left: 0px;
+  border-bottom: 0px;
+  position: absolute;
+  right: -15px;
+  transform: rotate(-45deg);
+  top: 8px;
+  transition: 0.3s; }
+
+/*Switch Css*/
+/* The switch - the box around the slider */
+.floating-widget-install__switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  margin-right: 8px;
+  height: 28px; }
+
+/* Hide default HTML checkbox */
+.floating-widget-install__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+/* The slider */
+.floating-widget-install__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dadada;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.floating-widget-install__slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 9; }
+
+.floating-widget-install__switch input:checked + .floating-widget-install__slider {
+  background-color: #6CBE4B; }
+
+.floating-widget-install__switch input:focus + .floating-widget-install__slider {
+  box-shadow: 0 0 1px #6CBE4B; }
+
+.floating-widget-install__switch input:checked + .floating-widget-install__slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px); }
+
+/* Rounded sliders */
+.floating-widget-install__slider.floating-widget-install__round {
+  border-radius: 34px; }
+
+.floating-widget-install__slider.floating-widget-install__round:before {
+  border-radius: 50%; }
+
+.floating-widget-install__slider.floating-widget-install__round:after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  color: #fff;
+  background-image: url(../../images/cross.jpg);
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.floating-widget-install__switch input:checked + .floating-widget-install__slider:after {
+  content: "";
+  right: inherit;
+  left: 5px;
+  background-image: url(../../images/check-icon.png);
+  top: 5px; }
+
+/*style Radio button*/
+/* Customize the label (the container) */
+.floating-widget-install-label__container {
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* Hide the browser's default radio button */
+.floating-widget-install-label__container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0; }
+
+/* Create a custom radio button */
+.floating-widget-install-label__checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 12px;
+  width: 12px;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 50%;
+  border: 2px solid #323232; }
+
+/* On mouse-over, add a grey background color */
+.floating-widget-install-label__container:hover input ~ .floating-widget-install-label__checkmark {
+  background-color: #ccc; }
+
+/* When the radio button is checked, add a blue background */
+.floating-widget-install-label__container input:checked ~ .floating-widget-install-label__checkmark {
+  background-color: #323232; }
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.floating-widget-install-label__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the indicator (dot/circle) when checked */
+.floating-widget-install-label__container input:checked ~ .floating-widget-install-label__checkmark:after {
+  display: block; }
+
+p.floating-widget-install-options__title {
+  font-size: 16px;
+  margin: 0 0 8px 0; }
+
+.floating-widget-install__options .radio-group {
+  margin-bottom: 20px; }
+
+.floating-widget-install__save button#podinbox-floating-button-install-save {
+  background: #eb304a;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  position: relative; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__info-container .podinbox-masthead__signup .podinbox-signup:hover,
+.podinbox-plugin-container span.podinbox-link a:hover,
+.podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-action button:hover,
+.floating-widget-install__save button#podinbox-floating-button-install-save:hover {
+  border-color: #eb304a;
+  opacity: .85; }
+
+.floating-widget-install__save #podinbox-configure-widget {
+  background: transparent;
+  color: #eb304a;
+  transition: 0.3s; }
+
+.podinbox-plugin-container .podinbox-masthead .podinbox-masthead__info-container .podinbox-masthead__signup .podinbox-signup:focus,
+.floating-widget-install__save button#podinbox-floating-button-install-save:focus,
+.podinbox-plugin-container span.podinbox-link a:focus,
+.floating-widget-install__save #podinbox-configure-widget:focus {
+  outline: none;
+  border-color: #eb304a;
+  box-shadow: none; }
+
+.floating-widget-install__save #podinbox-configure-widget:hover {
+  color: #fff;
+  background-color: #eb304a;
+  border-color: #eb304a; }
+
+.floating-widget-install__save .button-primary {
+  height: 50px;
+  padding: 0 30px;
+  border-color: #eb304a;
+  display: inline-flex;
+  align-items: center;
+  margin: 0 2px; }
+
+.floating-widget-install__save {
+  padding: 20px 35px 0;
+  border-top: 1px solid #e8e8e8;
+  margin: 20px -37px 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center; }
+
+.podinbox-body__step-two-container.disabled {
+  opacity: .5;
+  pointer-events: none;
+  position: relative; }
+
+.podinbox-body__step-two-container.disabled::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999; }
+
+.podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-action button.loading {
+  padding-right: calc(30px + 1em); }
+
+.podinbox-plugin-container .podinbox-body__step-two .floating-widget-install__save button.loading {
+  padding-right: calc(30px + 1em); }
+
+/*Responsive Css*/
+@media only screen and (min-width: 360px) and (max-width: 767px) {
+  body .podinbox-plugin-container {
+    margin-left: -10px; }
+  body .podinbox-plugin-container .podinbox-masthead {
+    margin-left: -20px;
+    padding-left: 20px; }
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container {
+    flex-wrap: initial;
+    max-width: 100%;
+    align-items: center;
+    margin: 0 15px;
+    height: inherit;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 0; }
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container > div {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap; }
-  .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__logo-container img {
-    width: 150px; }
-  .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__info-container .podinbox-masthead__signup .podinbox-signup {
-    padding: 15px;
-    background: #ed3049;
-    color: #fff !important; }
+    justify-content: flex-start; }
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container .podinbox-masthead__info-container {
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 15px; }
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__info-container .podinbox-masthead__signup .podinbox-signup {
+    margin-left: 0;
+    margin-top: 10px; }
+  body .podinbox-plugin-container .podinbox-body {
+    max-width: 100%;
+    margin: 55px 20px; }
+  body .podinbox-plugin-container span.step-one-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px; }
+  body .podinbox-plugin-container span.step-one-icon::before {
+    width: 30px;
+    height: 30px; }
+  body .podinbox-plugin-container span.step-one-title {
+    font-size: 13px; }
+  body .podinbox-plugin-container .podinbox-body__steps-container span.podinbox-link {
+    margin-top: 13px;
+    margin-left: 0;
+    display: inline-block; }
+  body .podinbox-plugin-container .podinbox-body__step-one-form {
+    margin: 20px 0;
+    flex-direction: column; }
+  body .podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-action,
+  body .podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-input {
+    width: 100%; }
+  body .podinbox-plugin-container .podinbox-body__step-one-form input {
+    padding: 5px 10px;
+    height: 50px;
+    width: 100%; }
+  body .podinbox-plugin-container .podinbox-body__step-one-form .podinbox-body__step-one-action button {
+    height: 35px;
+    padding: 0 30px;
+    width: max-content;
+    margin-top: 15px;
+    margin-left: 0px;
+    font-size: 11px; }
+  body .podinbox-body__step-two {
+    margin: 20px 0;
+    flex-direction: column; }
+  body .podinbox-body__step-two > div {
+    width: 100%;
+    margin: 0; }
+  body .podinbox-body__step-two .podinbox-body__floating-widget-install {
+    box-sizing: border-box;
+    margin-top: 20px; }
+  body .floating-widget-install__save .button-primary {
+    height: 35px;
+    padding: 0 10px;
+    font-size: 11px; }
+  body .floating-widget-install__save .button-primary .loader {
+    left: -6px; } }
 
-.podinbox-message {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  font-variant: tabular-nums;
-  line-height: 1.5715;
-  list-style: none;
-  font-feature-settings: 'tnum';
-  position: fixed;
-  top: 8px;
-  left: 0;
-  z-index: 1010;
-  width: 100%;
-  pointer-events: none; }
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container {
+    max-width: 90%; }
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container > div {
+    width: 30%; }
+  body .podinbox-plugin-container .podinbox-masthead .podinbox-masthead__inside-container .podinbox-masthead__info-container {
+    width: 70%; }
+  body .podinbox-plugin-container .podinbox-body {
+    max-width: 90%; }
+  body .floating-widget-install__save .button-primary {
+    height: 40px;
+    padding: 0 11px;
+    font-size: 12px; }
+  body .floating-widget-install__save .button-primary .loader {
+    left: -6px; } }
 
-.podinbox-message-notice {
-  padding: 8px;
-  text-align: center; }
+/*Spinner */
+.podinbox-plugin-container .loader,
+.podinbox-plugin-container .loader:after {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em; }
 
-.podinbox-message-notice-content {
-  display: inline-block;
-  padding: 10px 16px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-  pointer-events: all; }
-
-.podinbox-message-success .podinboxicon {
-  color: #52c41a; }
-
-.podinbox-message-error .podinboxicon {
-  color: #ff4d4f; }
-
-.podinbox-message-warning .podinboxicon {
-  color: #faad14; }
-
-.podinbox-message-info .podinboxicon,
-.podinbox-message-loading .podinboxicon {
-  color: #EC304A; }
-
-.podinbox-message .podinboxicon {
+.podinbox-plugin-container .loader {
+  display: none;
+  font-size: 10px;
   position: relative;
-  top: 1px;
-  margin-right: 8px;
-  font-size: 16px; }
-
-.podinbox-message-notice.move-up-leave.move-up-leave-active {
-  animation-name: MessageMoveOut;
-  animation-duration: 0.3s; }
-
-@keyframes MessageMoveOut {
-  0% {
-    max-height: 150px;
-    padding: 8px;
-    opacity: 1; }
-  100% {
-    max-height: 0;
-    padding: 0;
-    opacity: 0; } }
-
-.podinbox-message-rtl {
-  direction: rtl; }
-
-.podinbox-message-rtl span {
-  direction: rtl; }
-
-.podinbox-message-rtl .podinboxicon {
-  margin-right: 0;
-  margin-left: 8px; }
-
-.podinbox-message {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  font-variant: tabular-nums;
-  line-height: 1.5715;
-  list-style: none;
-  font-feature-settings: 'tnum';
-  position: fixed;
-  top: 8px;
-  left: 0;
-  z-index: 1010;
-  width: 100%;
-  pointer-events: none; }
-
-.podinbox-message-notice {
-  padding: 8px;
-  text-align: center; }
-
-.podinbox-message-notice-content {
-  display: inline-block;
-  padding: 10px 16px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-  pointer-events: all; }
-
-.podinbox-message-success .podinboxicon {
-  color: #52c41a; }
-
-.podinbox-message-error .podinboxicon {
-  color: #ff4d4f; }
-
-.podinbox-message-warning .podinboxicon {
-  color: #faad14; }
-
-.podinbox-message-info .podinboxicon,
-.podinbox-message-loading .podinboxicon {
-  color: #EC304A; }
-
-.podinbox-message .podinboxicon {
+  text-indent: -9999em;
+  border-top: 0.2em solid rgba(255, 255, 255, 0.2);
+  border-right: 0.2em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 0.2em solid rgba(255, 255, 255, 0.2);
+  border-left: 0.2em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
   position: relative;
-  top: 1px;
-  margin-right: 8px;
-  font-size: 16px; }
+  left: -15px; }
 
-.podinbox-message-notice.move-up-leave.move-up-leave-active {
-  animation-name: MessageMoveOut;
-  animation-duration: 0.3s; }
-
-@keyframes MessageMoveOut {
+@-webkit-keyframes load8 {
   0% {
-    max-height: 150px;
-    padding: 8px;
-    opacity: 1; }
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
   100% {
-    max-height: 0;
-    padding: 0;
-    opacity: 0; } }
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
-.podinbox-message-rtl {
-  direction: rtl; }
-
-.podinbox-message-rtl span {
-  direction: rtl; }
-
-.podinbox-message-rtl .podinboxicon {
-  margin-right: 0;
-  margin-left: 8px; }
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }

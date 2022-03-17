@@ -50,7 +50,15 @@ if ( ! class_exists( 'PodInbox_Admin_Settings' ) ) :
 		 * @return void
 		 */
 		public function settings() {
-			include_once( PODINBOX_ROOT_PATH . '/views/admin/settings.php' );
+			// Get PodInbox plugin settings.
+			$settings = podinbox_get_options();
+
+			$show_id          = podinbox_get_option( 'show_id', $settings );
+			$enabled          = podinbox_get_option( 'enable_floating_button', $settings );
+			$script_placement = podinbox_get_option( 'script_placement', $settings );
+			$display_device   = podinbox_get_option( 'display_device', $settings );
+
+			include_once PODINBOX_ROOT_PATH . '/views/admin/settings.php';
 		}
 
 	}

@@ -2,7 +2,7 @@
 /**
  * Silence is golden.
  *
- * @package PodInbox_widgets
+ * @package PodInbox
  */
 
 echo null;

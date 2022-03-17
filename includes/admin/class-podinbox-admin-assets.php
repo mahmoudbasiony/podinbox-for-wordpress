@@ -60,19 +60,8 @@ if ( ! class_exists( 'PodInbox_Admin_Assets' ) ) :
 				'podinbox_admin_scripts',
 				'podinbox_params',
 				array(
-					'ajax_url'       => esc_url( admin_url( 'admin-ajax.php' ) ),
-					'nonce'          => wp_create_nonce( 'podinbox-nonce' ),
-					'translations'   => array(
-						'required'                  => esc_html__( 'This field is required!', 'podinbox' ),
-						'google_places_placeholder' => esc_html__( 'Business Name', 'podinbox' ),
-						'no_places_found'           => esc_html__( 'No places found', 'podinbox' ),
-						'add_source_success'        => array(
-							'title'   => esc_html__( 'Review Source', 'podinbox' ),
-							'message' => esc_html__( 'Your review source has been added. We are currently fetching the reviews.', 'podinbox' ),
-						),
-						'confirm_delete'            => esc_html__( 'Are you sure to delete this item', 'podinbox' ),
-						'another_account'           => esc_html__( 'Are you sure? This will overwrite the existing review sources and widgets', 'podinbox' ),
-					),
+					'ajax_url' => esc_url( admin_url( 'admin-ajax.php' ) ),
+					'nonce'    => wp_create_nonce( 'podinbox-nonce' ),
 				)
 			);
 		}

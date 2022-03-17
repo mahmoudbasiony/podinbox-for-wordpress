@@ -1,7 +1,7 @@
 {
 	"name": "podinbox/podinbox",
 	"type": "wordpress-plugin",
-	"description": "",
+	"description": "PodInbox lets you easily accept audio messages on your website. With our plugin, your site visitors can record, preview, & send you voice messages.",
 	"homepage": "https://github.com/mahmoudbasiony/podinbox",
 	"license": "GPL-3.0-or-later",
 	"require": {

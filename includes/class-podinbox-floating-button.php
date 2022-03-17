@@ -15,15 +15,18 @@ if ( ! class_exists( 'PodInbox_Floating_Button' ) ) :
 	/**
 	 * PodInbox floating buttons.
 	 *
-	 * Handles adding PodInbox floating button on sites..
+	 * Handles adding PodInbox floating button on sites.
 	 *
 	 * @since 1.0.0
 	 */
 	class PodInbox_Floating_Button {
 		/**
-		 * 
+		 * The plugin settings.
+		 *
+		 * @since 1.0.0
+		 * @var array
 		 */
-		private static $settings;
+		private $settings;
 
 		/**
 		 * The constructor.
@@ -33,54 +36,68 @@ if ( ! class_exists( 'PodInbox_Floating_Button' ) ) :
 		 * @return void
 		 */
 		public function __construct() {
-			self::$settings = get_option( 'podinbox_floating_button_widget_settings', array() );
+			// Get PodInbox plugin settings.
+			$this->settings = podinbox_get_options();
 
-			if ( isset( self::$settings['enable_floating_button'] ) &&  'yes' === self::$settings['enable_floating_button'] ) {
-				switch ( self::$settings['script_placement'] ) {
-					case 'header' :
-						add_action( 'wp_head', array( $this, 'insert_widget_place' ) );
-					break;
+			$enabled          = podinbox_get_option( 'enable_floating_button', $this->settings );
+			$script_placement = podinbox_get_option( 'script_placement', $this->settings );
 
-					case 'body' :
+			// Checks if the plugin is enabled.
+			if ( $enabled && 'yes' === $enabled ) {
+				switch ( $script_placement ) {
+					case 'header':
+						add_action( 'wp_head', array( $this, 'insert_widget_place' ), 10 );
+						break;
 
-					break;
+					case 'body_open':
+						add_action( 'wp_body_open', array( $this, 'insert_widget_place' ), 10 );
+						break;
 
-					case 'footer' :
+					case 'footer':
+						add_action( 'wp_footer', array( $this, 'insert_widget_place' ), 40 );
+						break;
 
-					break;
-
-					default :
-						add_action( 'wp_head', array( $this, 'insert_widget_place' ) );
-					break;
+					default:
+						add_action( 'wp_head', array( $this, 'insert_widget_place' ), 10 );
+						break;
 				}
+
+				add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 			}
 		}
 
 		/**
-		 * 
+		 * Insert widget code in the selected place - whether in header, after body open or footer.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		public function insert_widget_place() {
-			$show_id = self::$settings['show_id'];
-			$display_device = self::$settings['display_device'];
+			$show_id = podinbox_get_option( 'show_id', $this->settings );
 
-			if ( 'both' === $display_device ) {
-
-			}
-
-			?>
-				<script type="text/javascript">
-					var w = document.documentElement.clientWidth || window.innerWidth;
-					var displayDevice = "<?php echo $display_device ?>";
-
-					if (w <= 480 && 'mobile' === displayDevice) {
-					// Probably mobile
-					} else {
-					// Probably desktop
-					}
-				</script>';'
-			<?php
-			echo '<script>var podinboxFloatingWidget = "'.esc_attr( $show_id ).'"; </script>';
+			echo '<script>var podinboxFloatingWidget = "' . esc_attr( $show_id ) . '"; </script>';
 			echo '<script type="text/javascript" src="https://podinbox.net/widget.js" podinbox-origin="https://podinbox.net" async></script>';
+		}
+
+		/**
+		 * Enqueue generated inline styles.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
+		public function styles() {
+			// Adds inline css if display option is not for both desktop and mobile devices.
+			if ( 'both' !== podinbox_get_option( 'display_device', $this->settings ) ) {
+				/**
+				 * Include generated CSS.
+				 */
+				include_once PODINBOX_ROOT_PATH . '/includes/styles.php';
+				wp_register_style( 'podinbox_generated_css', false );
+				wp_enqueue_style( 'podinbox_generated_css' );
+				wp_add_inline_style( 'podinbox_generated_css', $generated_css );
+			}
 		}
 	}
 

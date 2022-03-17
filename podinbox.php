@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: PodInbox
- * Plugin URI:
- * Description: .
+ * Plugin Name: PodInbox - Accept Voice Messages on Your Website
+ * Plugin URI:https://podinbox.com/plugins
+ * Description: PodInbox lets you easily accept audio messages on your website. With our plugin, your site visitors can record, preview, & send you voice messages..
  * Version: 1.0.0
  * Author: PodInbox
  * Author URI: https://www.podinbox.com
- * Requires at least: 4.7.0
- * Tested up to: 5.8
+ * Requires at least: 5.2
+ * Tested up to: 5.9
  *
  * Text Domain: podinbox
  * Domain Path: /languages/
@@ -26,9 +26,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
  * Globals constants.
  */
-define( 'PODINBOX_PLUGIN_VERSION', '1.1.0' );
+define( 'PODINBOX_PLUGIN_VERSION', '1.0.0' );
 define( 'PODINBOX_MIN_PHP_VER', '5.6.0' );
-define( 'PODINBOX_MIN_WP_VER', '4.7.0' );
+define( 'PODINBOX_MIN_WP_VER', '5.2.0' );
 define( 'PODINBOX_ROOT_PATH', dirname( __FILE__ ) );
 define( 'PODINBOX_ROOT_URL', plugin_dir_url( __FILE__ ) );
 define( 'PODINBOX_TEMPLATES_PATH', dirname( __FILE__ ) . '/views/' );
@@ -100,6 +100,7 @@ if ( ! class_exists( 'PodInbox' ) ) :
 			/*
 			 * Global includes.
 			 */
+			include_once PODINBOX_ROOT_PATH . '/includes/functions.php';
 			include_once PODINBOX_ROOT_PATH . '/includes/class-podinbox-floating-button.php';
 
 			/*
@@ -123,9 +124,6 @@ if ( ! class_exists( 'PodInbox' ) ) :
 		public function hooks() {
 			// Filters.
 			add_filter( 'plugin_action_links', array( $this, 'adds_settings_action_plugin' ), 10, 5 );
-
-			// Actions.
-
 		}
 
 		/**
@@ -168,12 +166,12 @@ if ( ! class_exists( 'PodInbox' ) ) :
 			/*
 			 * Set default settings.
 			 */
-			$settings['show_id'] = '';
+			$settings['show_id']                = '';
 			$settings['enable_floating_button'] = '';
-			$settings['script_placement'] = 'header';
-			$settings['display_device'] = 'desktop-and-mobile';
-			$settings['created_at'] = current_time( 'mysql' );
-			$settings['updated_at'] = current_time( 'mysql' );
+			$settings['script_placement']       = 'header';
+			$settings['display_device']         = 'both';
+			$settings['created_at']             = current_time( 'mysql' );
+			$settings['updated_at']             = current_time( 'mysql' );
 
 			add_option( 'podinbox_floating_button_widget_settings', $settings );
 		}

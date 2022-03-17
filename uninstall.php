@@ -23,5 +23,5 @@ if ( defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	/*
 	 * Delete plugin options.
 	 */
-	delete_option( 'podinbox_settings' );
+	delete_option( 'podinbox_floating_button_widget_settings' );
 }

@@ -21,6 +21,14 @@ if ( ! class_exists( 'PodInbox_Admin_Ajax' ) ) :
 	 */
 	class PodInbox_Admin_Ajax {
 		/**
+		 * The plugin settings.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 */
+		private $settings;
+
+		/**
 		 * The constructor.
 		 *
 		 * @since 1.0.0
@@ -28,11 +36,18 @@ if ( ! class_exists( 'PodInbox_Admin_Ajax' ) ) :
 		 * @return void
 		 */
 		public function __construct() {
+			$this->settings = podinbox_get_options();
+
 			add_action( 'wp_ajax_podinbox_save_show_id', array( $this, 'save_show_id' ) );
+			add_action( 'wp_ajax_podinbox_save_floating_button_options', array( $this, 'save_floating_button_options' ) );
 		}
 
 		/**
-		 * 
+		 * Save the show ID.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
 		 */
 		public function save_show_id() {
 			// Check for nonce security.
@@ -40,58 +55,70 @@ if ( ! class_exists( 'PodInbox_Admin_Ajax' ) ) :
 				wp_die( esc_html__( 'Cheatin&#8217; huh?', 'podinbox' ) );
 			}
 
+			// Validate custom data action.
 			if ( isset( $_POST ) && isset( $_POST['action'] ) && 'podinbox_save_show_id' === $_POST['action'] ) {
-				$show_id = isset( $_POST['show_id'] ) ? sanitize_text_field( $_POST['show_id'] ) : '';
+				$show_id = isset( $_POST['show_id'] ) ? podinbox_sanitize( 'show_id', $_POST['show_id'] ) : '';
 
-				$settings = get_option( 'podinbox_floating_button_widget_settings', array() );
-				$settings['show_id'] = $show_id;
-				$settings['updated_at'] = current_time( 'mysql' );
+				$this->settings['show_id']    = $show_id;
+				$this->settings['updated_at'] = podinbox_sanitize( 'updated_at', current_time( 'mysql' ) );
 
-				if ( update_option( 'podinbox_floating_button_widget_settings', $settings ) ) {
-					wp_send_json_success( $show_id );
+				// Disable floating button if empty show ID.
+				if ( '' === $show_id || empty( $show_id ) ) {
+					$this->settings['enable_floating_button'] = '';
+				}
+
+				// Initialize results array.
+				$result = array();
+
+				if ( podinbox_update_options( $this->settings ) ) {
+					$result['status']  = 200;
+					$result['message'] = esc_html__( 'Your Show ID has been updated successfully', 'podinbox' );
+					$result['show_id'] = $show_id;
+
+					wp_send_json_success( $result );
 				}
 
 				die();
 			}
 		}
+
 		/**
-		 * Renders the edit/create widget form.
+		 * Save float button widget install options.
 		 *
 		 * @since 1.0.0
 		 *
 		 * @return void
 		 */
-		public function renders_widget_form() {
+		public function save_floating_button_options() {
 			// Check for nonce security.
 			if ( ! wp_verify_nonce( $_POST['nonce'], 'podinbox-nonce' ) ) {
 				wp_die( esc_html__( 'Cheatin&#8217; huh?', 'podinbox' ) );
 			}
 
-			if ( isset( $_POST ) && isset( $_POST['action'] ) && 'podinbox_renders_widget_form' === $_POST['action'] ) {
-				$widget_id = isset( $_POST['widget_id'] ) ? absint( $_POST['widget_id'] ) : 0;
+			// Validate custom data action.
+			if ( isset( $_POST ) && isset( $_POST['action'] ) && 'podinbox_save_floating_button_options' === $_POST['action'] ) {
+				$enabled          = isset( $_POST['enabled'] ) ? podinbox_sanitize( 'enable_floating_button', $_POST['enabled'] ) : '';
+				$script_placement = isset( $_POST['script_placement'] ) ? podinbox_sanitize( 'script_placement', $_POST['script_placement'] ) : '';
+				$display_device   = isset( $_POST['display_device'] ) ? podinbox_sanitize( 'display_device', $_POST['display_device'] ) : '';
 
-				$form = podinbox_render_widget_form( $widget_id );
+				$this->settings['enable_floating_button'] = $enabled;
+				$this->settings['script_placement']       = $script_placement;
+				$this->settings['display_device']         = $display_device;
+				$this->settings['updated_at']             = podinbox_sanitize( 'updated_at', current_time( 'mysql' ) );
 
-				if ( ! $form ) {
-					wp_die( esc_html__( 'Something went wrong! Cannot get the edit widget form', 'podinbox' ) );
-				}
-
-				// Declare result array.
+				// Initialize results array.
 				$result = array();
 
-				// Append result to result array.
-				$result['widget_id'] = $widget_id;
-				$result['form']      = $form;
-				$result['status']    = 200;
+				if ( podinbox_update_options( $this->settings ) ) {
+					$result['status']  = 200;
+					$result['message'] = esc_html__( 'Your changes have been saved successfully', 'podinbox' );
 
-				// Send the json success.
-				wp_send_json_success( $result );
+					wp_send_json_success( $result );
+				}
 
+				die();
 			}
-
-			die();
 		}
-
 	}
 
 	return new PodInbox_Admin_Ajax();

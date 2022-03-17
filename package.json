@@ -1,7 +1,7 @@
 {
-	"title": "PodInbox",
+	"title": "PodInbox - Accept Voice Messages on Your Website",
 	"name": "podinbox",
-	"description": "",
+	"description": "PodInbox lets you easily accept audio messages on your website. With our plugin, your site visitors can record, preview, & send you voice messages.",
 	"main": "podinbox.php",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
