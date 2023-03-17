@@ -1,6 +1,6 @@
 # PodInbox
 
-
+PodInbox lets you easily accept audio messages on your website. With our plugin, your site visitors can record, preview, & send you voice messages..
 
 Installation
 ---------------
